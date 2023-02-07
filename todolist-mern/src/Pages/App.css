@@ -1,0 +1,123 @@
+*{
+  margin: 0px;
+  padding: 0px;
+  box-sizing: border-box;
+}
+.App {
+  text-align: center;
+}
+
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+
+h1{
+  font-weight: bolder;
+  font-size: 64px;
+  background-color: blue;
+  color: white;
+  margin: 40px 20px;
+}
+
+.Input input{
+  width: 40%;
+  padding: 18px;
+  font-size: 32px;
+  border-radius: 25px;
+  border: 5px solid yellowgreen;
+  outline: 0px;
+  
+}
+.Input input:hover{
+  border: 5px solid yellowgreen;
+}
+.Input input:focus {
+  /* border: 5px solid yellowgreen; */
+  background-color: yellowgreen;
+    color: white;
+}
+
+.Todo .btn-delete-all{
+  margin: 20px;
+  background-color: yellowgreen;
+  color: white;
+  padding: 12px;
+  font-size: 16px;
+  border-radius: 25px;
+    border: 2px solid transparent;
+
+}
+.Todo button:hover{
+  color: yellowgreen;
+  background-color: white;
+  border: 2px solid yellowgreen;
+}
+
+.List{
+  display: flex;
+  justify-content: center;
+  /* width: 100vw; */
+    align-items: center;
+    gap: 20px;
+
+}
+
+
+.List .display-wrapper {
+  background-color: rgb(137, 157, 97);
+  border-radius: 25px;
+  /* padding-left: -30px; */
+}
+.List .display-element{
+  display: flex;
+  margin-top: 20px;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: yellow;
+  border-radius: 25px;
+  padding:8px ;
+  width: 100%;
+  font-size: 16px;
+  font-weight: 300;
+  align-items: center;
+}
+
+
+
+.List .display-element:hover{
+  background: yellowgreen;
+  color: white;
+  transform: translateY(-5px);
+}
+
+.List .display-element .text{
+  padding:0px 30px;
+}
+.List .display-element .button-box{
+  display: flex;
+  gap: 2px;
+}
+
+.List button {
+  background: greenyellow;
+  color: white;
+  padding: 8px;
+  font-size: 12px;
+  border-radius: 25px;
+  border: 2px solid transparent ;
+}
+.List button:hover{
+  background-color: white;
+  color: greenyellow;
+  border: 2px solid greenyellow;
+}
