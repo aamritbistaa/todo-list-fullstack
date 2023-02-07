@@ -28,3 +28,8 @@ export const deleteDataToApi = async ({ id }) => {
   const response = await deleteDataToBackend(`${LOCALURL}/todolist/${id}`, {});
   return response;
 };
+
+export const deleteAllDataToApi = async () => {
+  const response = await deleteDataToBackend(`${LOCALURL}/todolist`, {});
+  return response;
+};

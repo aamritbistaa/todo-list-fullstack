@@ -4,7 +4,6 @@ import "../../App.css";
 const List = ({ list, DeleteItem, CompleteItem, EditItem, EditId, editid }) => {
   const [complete, setComplete] = useState(false);
   const [editInput, setEditInput] = useState("");
-  // const [editId, setEditId] = useState();
 
   const handleEditId = (id) => {
     EditId(id);

@@ -6,6 +6,7 @@ import {
   addTodosAPI,
   updateTodoById,
   deleteDataToApi,
+  deleteAllDataToApi,
 } from "./api/TodoListService";
 // import { addTodosApi, updateTodoById } from "../api/TodoListService";
 
@@ -44,6 +45,12 @@ export const updateTodos = createAsyncThunk(
 );
 export const deleteTodos = createAsyncThunk("todo/delete", async ({ id }) => {
   const res = await deleteDataToApi({ id });
+  const data = await res.json();
+  return data;
+});
+
+export const deleteAllTodos = createAsyncThunk("todo/delete", async () => {
+  const res = await deleteAllDataToApi();
   const data = await res.json();
   return data;
 });

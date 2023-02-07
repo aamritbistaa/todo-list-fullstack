@@ -39,6 +39,7 @@ const postDataToBackend = async (url, data, token) => {
 };
 
 const deleteDataToBackend = async (url, token) => {
+  console.log("to delete", url);
   const req = {
     method: "DELETE",
     headers: {

@@ -10,6 +10,7 @@ import {
   updateTodos,
   STATUSES,
   deleteTodos,
+  deleteAllTodos,
 } from "../redux/todoslice";
 
 const Todo = () => {
@@ -36,22 +37,24 @@ const Todo = () => {
     return <div>Error</div>;
   }
 
-  const handleAdd = (item) => {
+  const handleAdd = async (item) => {
     // console.log("Information sent from input slide is ", item);
 
     // setActivityList([...activityList, item]);
-    // console.log("list information is ", ...activityList);4
+    // console.log("list information is ", ...activityList);
 
-    dispatch(addTodos(item));
-    dispatch(fetchTodos());
+    await dispatch(addTodos(item));
+    await dispatch(fetchTodos());
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
+    console.log(id);
     if (id === "all") {
-      setActivityList([]);
+      await dispatch(deleteAllTodos());
+      // setActivityList([]);
     } else {
-      dispatch(deleteTodos(id));
-      dispatch(fetchTodos());
+      await dispatch(deleteTodos({ id }));
+      // await dispatch(fetchTodos());
 
       // console.log("Delete item with id=", id);
       // const updated_list = activityList.filter((elem) => {
@@ -61,6 +64,7 @@ const Todo = () => {
       // setActivityList(updated_list);
       // console.log("Remaining item list = ", updated_list);
     }
+    await dispatch(fetchTodos());
   };
 
   const handleComplete = async (id) => {
