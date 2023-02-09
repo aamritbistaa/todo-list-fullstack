@@ -6,8 +6,8 @@ import Todo from "./Pages/Todo";
 function App() {
   return (
     <div className="App">
-      {/* <Login />
-      <Register /> */}
+      <Login />
+      <Register />
       <Todo />
     </div>
   );

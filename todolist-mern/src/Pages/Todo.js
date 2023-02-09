@@ -10,7 +10,7 @@ import {
   updateTodos,
   STATUSES,
   deleteTodos,
-  deleteAllTodos,
+  // deleteAllTodos,
 } from "../redux/todoslice";
 
 const Todo = () => {
@@ -48,9 +48,11 @@ const Todo = () => {
   };
 
   const handleDelete = async (id) => {
-    console.log(id);
+    // console.log(id, "todo page", id == "all");
     if (id === "all") {
-      await dispatch(deleteAllTodos());
+      // await dispatch(deleteAllTodos());
+      dispatch(deleteTodos({}));
+      dispatch(fetchTodos());
       // setActivityList([]);
     } else {
       await dispatch(deleteTodos({ id }));

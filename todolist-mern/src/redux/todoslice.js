@@ -44,16 +44,17 @@ export const updateTodos = createAsyncThunk(
   }
 );
 export const deleteTodos = createAsyncThunk("todo/delete", async ({ id }) => {
+  console.log(id, "slicetodo");
   const res = await deleteDataToApi({ id });
   const data = await res.json();
   return data;
 });
 
-export const deleteAllTodos = createAsyncThunk("todo/delete", async () => {
-  const res = await deleteAllDataToApi();
-  const data = await res.json();
-  return data;
-});
+// export const deleteAllTodos = createAsyncThunk("todo/delete", async () => {
+//   const res = await deleteAllDataToApi();
+//   const data = await res.json();
+//   return data;
+// });
 
 export const todoSlice = createSlice({
   name: "todo",

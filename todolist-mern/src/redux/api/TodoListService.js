@@ -25,11 +25,16 @@ export const updateTodoById = async ({ id, value, done }) => {
 };
 
 export const deleteDataToApi = async ({ id }) => {
-  const response = await deleteDataToBackend(`${LOCALURL}/todolist/${id}`, {});
+  console.log(id);
+  const response = id
+    ? await deleteDataToBackend(`${LOCALURL}/todolist/${id}`, {})
+    : await deleteDataToBackend(`${LOCALURL}/todolist`, {});
+
   return response;
 };
 
-export const deleteAllDataToApi = async () => {
-  const response = await deleteDataToBackend(`${LOCALURL}/todolist`, {});
-  return response;
-};
+// export const deleteAllDataToApi = async () => {
+//   const response = await deleteDataToBackend(`${LOCALURL}/todolist`, {});
+
+//   return response;
+// };
