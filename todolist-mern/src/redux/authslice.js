@@ -1,13 +1,13 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { setUserRegister } from "./api/RegisterService";
-import { login } from "./api/LoginService";
+import { setUserRegister } from "../api/RegisterService";
+import { login } from "../api/LoginService";
 import { STATUSES } from "./todoslice";
 
 const initialState = {
   token: null,
   isLoggedIn: false,
   userDetail: {},
-  // status: STATUSES.IDLE,
+  status: STATUSES.IDLE,
   isUserRegister: false,
 };
 
@@ -77,16 +77,11 @@ export const authSlice = createSlice({
       .addCase(loginUser.pending, (state, action) => {
         state.status = STATUSES.LOADING;
       })
-      .addCase(loginUser.pending, (state, action) => {
-        console.log(action, "action");
-        state.status = STATUSES.IDLE;
-      })
+
       .addCase(loginUser.rejected, (state, action) => {
         state.status = STATUSES.ERROR;
       })
-      .addCase(loginUser, (state, action) => {
-        state.status = STATUSES.LOADING;
-      })
+
       .addCase(loginUser.fulfilled, (state, action) => {
         console.log(action, "action");
         state.status = STATUSES.IDLE;
@@ -97,11 +92,9 @@ export const authSlice = createSlice({
           email: action.payload.name,
           profilePic: action.payload.profilePic,
         };
-      })
-      .addCase(loginUser.rejected, (state, action) => {
-        state.status = STATUSES.ERROR;
       });
   },
 });
+
 export const { setLogin, setLogout, setRegisterTab } = authSlice.actions;
 export default authSlice.reducer;

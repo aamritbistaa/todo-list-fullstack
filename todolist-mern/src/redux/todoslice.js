@@ -7,7 +7,7 @@ import {
   updateTodoById,
   deleteDataToApi,
   deleteAllDataToApi,
-} from "./api/TodoListService";
+} from "../api/TodoListService";
 // import { addTodosApi, updateTodoById } from "../api/TodoListService";
 
 export const STATUSES = Object.freeze({

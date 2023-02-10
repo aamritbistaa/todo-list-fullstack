@@ -28,7 +28,7 @@ const postDataToBackend = async (url, data, token) => {
     url,
     data,
   };
-  console.log(url, data);
+  console.log(req, url, data);
   try {
     const response = await axios(req);
     console.log(response);

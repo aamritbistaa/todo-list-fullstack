@@ -4,7 +4,7 @@ const userSchema = new mongoose.Schema(
   {
     fullname: {
       type: String,
-      required: true,
+      required: false,
       maxlength: 32,
       trim: true, //trim all extra spaces
     },

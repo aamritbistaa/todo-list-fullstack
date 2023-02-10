@@ -112,22 +112,26 @@ const Todo = () => {
   };
 
   return (
-    <div className="Todo">
-      <Header />
-      <div>
-        <Input todoActivity={handleAdd} />
-        <button onClick={() => handleDelete("all")} className="btn-delete-all">
-          Delete all
-        </button>
+    <div className="App">
+      <div className="Todo">
+        <Header />
+        <div>
+          <Input todoActivity={handleAdd} />
+          <button
+            onClick={() => handleDelete("all")}
+            className="btn-delete-all">
+            Delete all
+          </button>
+        </div>
+        <List
+          list={todos}
+          DeleteItem={handleDelete}
+          CompleteItem={handleComplete}
+          EditItem={handleEdit}
+          EditId={EditId}
+          editid={editid}
+        />
       </div>
-      <List
-        list={todos}
-        DeleteItem={handleDelete}
-        CompleteItem={handleComplete}
-        EditItem={handleEdit}
-        EditId={EditId}
-        editid={editid}
-      />
     </div>
   );
 };

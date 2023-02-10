@@ -7,6 +7,7 @@ import user from "../model/User.js";
 export const login = async (req, res) => {
   try {
     const { fullname, email, password } = req.body;
+    console.log(req.body);
     const userDetail = await user.findOne({ email: email });
     if (!userDetail) {
       return res.status(400).json({ message: "User doesnot exist" });
