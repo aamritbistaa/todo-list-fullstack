@@ -19,6 +19,8 @@ export const STATUSES = Object.freeze({
 const initialState = {
   todos: [],
   status: STATUSES.IDLE,
+  token: "",
+  isLoggedIn: false,
 };
 
 export const fetchTodos = createAsyncThunk("todos/fetch", async () => {
@@ -64,11 +66,14 @@ export const todoSlice = createSlice({
       state.todos.push(action.payload);
     },
     setDeletePost: (state, action) => {
+      console.log("delete");
       state.todos = state.todos.filter((i) => i.id !== action.id);
     },
-    setLogout: (state) => {
+    setLogout: (state, payload) => {
+      console.log(payload);
       state.token = null;
       state.isLoggedIn = false;
+      state.status = "loading";
     },
     editTodos: (state, action) => {},
     setStatus: (state, action) => {

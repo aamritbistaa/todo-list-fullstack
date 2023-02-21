@@ -4,14 +4,18 @@ import { useNavigate } from "react-router-dom";
 import { setLogout } from "../redux/todoslice";
 
 const Logout = () => {
-  const { isLoggedIn } = useSelector((state) => state.auth);
+  const { isLoggedIn, status } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  console.log("logout", "islogged in", isLoggedIn);
+
   useEffect(() => {
+    console.log("logout component useefffect");
     localStorage.removeItem("token");
-    dispatch(setLogout);
+    dispatch(setLogout("test"));
     navigate("/login", { replace: false });
-  }, [isLoggedIn]);
+  });
+
   return <div>Logout</div>;
 };
 

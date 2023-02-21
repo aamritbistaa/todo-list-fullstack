@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema(
       required: true,
       min: 5,
     },
+    profilePic: {
+      type: String,
+      require: false,
+    },
   },
   { timespams: true } //automatically creates time of creation
 );

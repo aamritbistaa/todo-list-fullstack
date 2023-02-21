@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import { AppBar, Toolbar, Typography, Box, Tab, Avatar } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const Header = () => {
   const [token, setToken] = useState("");
+  const { isLoggedIn, status } = useSelector((state) => state.auth);
   useEffect(() => {
     const token = localStorage.getItem("token");
     if (token) {
@@ -12,7 +15,7 @@ const Header = () => {
       localStorage.removeItem("token");
       setToken("");
     }
-  });
+  }, [isLoggedIn]);
   console.log(token, "p");
 
   return (

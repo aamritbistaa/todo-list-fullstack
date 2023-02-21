@@ -14,7 +14,7 @@ import {
 } from "../redux/todoslice";
 
 const Todo = () => {
-  const [activityList, setActivityList] = useState([]);
+  // const [activityList, setActivityList] = useState([]);
   const [editid, setEditId] = useState("");
   // useEffect(() => {
   //   dispatch
@@ -30,10 +30,10 @@ const Todo = () => {
   }, []);
 
   console.log(status);
-  if (status == STATUSES.LOADING) {
+  if (status === STATUSES.LOADING) {
     return <div>Loading</div>;
   }
-  if (status == STATUSES.ERROR) {
+  if (status === STATUSES.ERROR) {
     return <div>Error</div>;
   }
 
