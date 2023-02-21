@@ -69,12 +69,7 @@ export const todoSlice = createSlice({
       console.log("delete");
       state.todos = state.todos.filter((i) => i.id !== action.id);
     },
-    setLogout: (state, payload) => {
-      console.log(payload);
-      state.token = null;
-      state.isLoggedIn = false;
-      state.status = "loading";
-    },
+
     editTodos: (state, action) => {},
     setStatus: (state, action) => {
       state.status = action.payload;
@@ -105,7 +100,7 @@ export const todoSlice = createSlice({
   },
 });
 
-export const { setTodos, setDeletePost, setLogout, setStatus, listTodos } =
+export const { setTodos, setDeletePost, setStatus, listTodos } =
   todoSlice.actions;
 
 export default todoSlice.reducer;

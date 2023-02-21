@@ -18,11 +18,6 @@ function App() {
           <Route path="/todo" element={<Todo />} />
           <Route path="/logout" element={<Logout />} />
         </Routes>
-        {/* <div className="App">
-          <Login />
-          <Register />
-          <Todo />
-        </div> */}
       </main>
     </>
   );

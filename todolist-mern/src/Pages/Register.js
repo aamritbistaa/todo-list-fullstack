@@ -3,9 +3,14 @@ import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { registerUser } from "../redux/authslice";
 import { STATUSES } from "../redux/todoslice";
+import axios from "axios";
+import { postDataToBackend } from "../api/Apiservice";
+
+const LOCALURL = "http://localhost:8000";
+const avator = require("../avator.png");
 
 const Register = () => {
-  // const [username, setUsername] = useState("");
+  // const [username, setusername] = useState("");
   // const [email, setEmail] = useState("");
   // const [password, setPassword] = useState("");
   const { isUserRegister, status } = useSelector((state) => state.auth);
@@ -14,39 +19,46 @@ const Register = () => {
     email: "aamritbistaa@gmail.com",
     password: "test",
   });
+  const [avatarIcon, setAvatarIcon] = useState(avator);
   const dispatch = useDispatch();
 
+  const handleFileChange = (e) => {
+    setAvatarIcon(e.target.file[0]);
+  };
+
   const handleOnChange = (e, type) => {
+    // console.log(type, e);
     setUserDetail({
       ...userDetail,
       [type]: e.target.value,
     });
   };
-  const handleSubmit = (e) => {
+  const { password, email, fullname } = userDetail;
+  const handleSubmit = async (e) => {
     e.preventDefault();
     dispatch(registerUser(userDetail));
+
+    const formData = new FormData();
+    formData.append("password", password);
+    formData.append("email", email);
+    formData.append("fullname", fullname);
+    formData.append("myImage", avatarIcon);
+    let config = {
+      method: "post",
+      url: `${LOCALURL}/user/register`,
+      data: formData,
+    };
+    console.log(config);
+
+    await axios(config)
+      .then((res) => {
+        console.log(res);
+        alert("do something");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
-  if (status == STATUSES.LOADING) {
-    return (
-      <div className="loading">
-        <h1>Loading</h1>
-      </div>
-    );
-  }
-  if (status == STATUSES.IDLE && isUserRegister == true) {
-    return (
-      <div className="loading">
-        <Alert>Success</Alert>
-      </div>
-    );
-  }
-  if (status == STATUSES.ERROR) {
-    return (
-      <div className="loading">
-        <Alert>ERROR</Alert>
-      </div>
-    );
-  }
 
   return (
     <div className="register">
@@ -65,6 +77,7 @@ const Register = () => {
             placeholder="Password"
             onChange={(e) => handleOnChange(e, "password")}
           />
+          <input type="file" onChange={handleFileChange} />
           <button onClick={handleSubmit}>Submit</button>
         </form>
       </div>

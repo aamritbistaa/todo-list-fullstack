@@ -44,6 +44,7 @@ export const register = async (req, res) => {
           fullname,
           email,
           password: passwordHash,
+          profilePic: req.filename || "",
         });
         await newUser.save();
         res.status(201).json({ message: "successfully created" });

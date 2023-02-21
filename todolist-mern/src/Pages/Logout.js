@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { setLogout } from "../redux/todoslice";
+import { setLogout } from "../redux/authslice";
 
 const Logout = () => {
   const { isLoggedIn, status } = useSelector((state) => state.auth);
@@ -12,7 +12,7 @@ const Logout = () => {
   useEffect(() => {
     console.log("logout component useefffect");
     localStorage.removeItem("token");
-    dispatch(setLogout("test"));
+    dispatch(setLogout());
     navigate("/login", { replace: false });
   });
 
