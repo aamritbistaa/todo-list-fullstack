@@ -16,7 +16,6 @@ const Header = () => {
       setToken("");
     }
   }, [isLoggedIn]);
-  console.log(token, "p");
 
   return (
     <>

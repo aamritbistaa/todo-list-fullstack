@@ -28,10 +28,11 @@ const postDataToBackend = async (url, data, token) => {
     url,
     data,
   };
-  console.log(req, url, data);
+  console.log("api services", req, url, data);
   try {
     const response = await axios(req);
     console.log(response);
+
     return response;
   } catch (err) {
     console.log(err);

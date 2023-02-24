@@ -23,8 +23,9 @@ const Register = () => {
   const dispatch = useDispatch();
 
   const handleFileChange = (e) => {
-    setAvatarIcon(e.target.file[0]);
+    setAvatarIcon(e.target.files[0]);
   };
+  console.log(avatarIcon);
 
   const handleOnChange = (e, type) => {
     // console.log(type, e);
@@ -43,17 +44,16 @@ const Register = () => {
     formData.append("email", email);
     formData.append("fullname", fullname);
     formData.append("myImage", avatarIcon);
+
     let config = {
       method: "post",
       url: `${LOCALURL}/user/register`,
       data: formData,
     };
-    console.log(config);
 
     await axios(config)
       .then((res) => {
         console.log(res);
-        alert("do something");
       })
       .catch((error) => {
         console.log(error);
